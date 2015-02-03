@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #23241f;
+    color: #f8f8f2;
+}
+
+wc-menu {
+    display: block;
+    width: 20%;
+    position: relative;
+    float: left;
+}
+
+wc-content {
+    margin-left: 20%;
+    display: block;
+    height: 100%;
+}

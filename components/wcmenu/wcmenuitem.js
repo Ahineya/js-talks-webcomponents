@@ -11,8 +11,6 @@
                 clone.querySelector('#menuitem').innerText = this.getAttribute('title') || 'none';
 
                 this.onclick = function() {
-                    console.log('menuitem ' + (this.getAttribute('title') || 'none') + ' clicked.');
-                    //document.querySelector('wc-content').loadContent(this.getAttribute('title') || 'none');
                     var target = this.getAttribute('target');
                     document.querySelector('wc-content').loadContent( target );
                 };

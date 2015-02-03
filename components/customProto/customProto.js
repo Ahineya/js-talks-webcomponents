@@ -1,4 +1,4 @@
-;(function() {
+(function() {
     console.log('custom-proto imported');
 
     var importDoc = document.currentScript.ownerDocument;
@@ -23,10 +23,6 @@
         this.innerText = 'Custom element with prototype attached';
     };
 
-
     document.registerElement('custom-proto', {prototype: proto});
-
-
-
 
 })();

@@ -1,1 +1,51 @@
+<link id="wchighlighter" rel="import" href="../wchighlighter/wchighlighter.html"/>
+
+<template id="wccontent-template">
+    <style>
+        .js {
+            height: 40%;
+        }
+        .html {
+            height: 40%;
+        }
+        .component {
+            height: 20%;
+        }
+        div {
+            overflow-y: auto;
+            width: 100%;
+            background: #23241f;
+        }
+        div~div {
+            border-top: 1px solid rgb(156,156,156);
+        }
+        .fullscreen {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+        }
+        .btn-fullscreen {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 20px;
+            background-color: #cccccc;
+            color: black;
+            text-align: center;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .btn-fullscreen:hover {
+            background-color: #dbdbdb;
+        }
+    </style>
+
+    <div class="js"></div>
+    <div class="html"></div>
+    <div class="component"></div>
+    <div class="btn-fullscreen">+</div>
+
+</template>
+
 <script src="wccontent.js"></script>

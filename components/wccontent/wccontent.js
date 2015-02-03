@@ -9,19 +9,32 @@
             value: function () {
                 shadow = this.createShadowRoot();
             }
+        },
+        attachedCallback: {
+            value: function() {
+                var t = importDoc.querySelector('#wccontent-template');
+                var template = importDoc.importNode(t.content, true);
+                shadow.appendChild(template);
+                $(shadow.querySelector('.btn-fullscreen')).click(function() {
+                    $(shadow.querySelector('.js')).toggleClass('fullscreen');
+                    $(this).html($(this).html() == '-' ? '+' : '-');
+                });
+            }
         }
     });
 
     proto.loadContent = function(content) {
-        var cnt = document.createElement(content);
-        shadow.innerHTML = "";
-        shadow.appendChild(cnt);
 
         $.ajax({
             url: '/components/' + camelCase(content) + '/' + camelCase(content) + '.js',
             dataType: "text",
             success: function(data) {
-                console.log('loaded js: ' + data);
+                var cnt = document.createElement('wc-highlighter');
+                shadow.querySelector('.js').innerHTML = '';
+                shadow.querySelector('.js').appendChild(cnt);
+
+                cnt.show(data, 'javascript');
+
             }
         });
 
@@ -29,10 +42,16 @@
             url: '/components/' + camelCase(content) + '/' + camelCase(content) + '.html',
             dataType: "text",
             success: function(data) {
-                console.log('loaded html: ' + data);
+                var cnt = document.createElement('wc-highlighter');
+                shadow.querySelector('.html').innerHTML = '';
+                shadow.querySelector('.html').appendChild(cnt);
+
+                cnt.show(data, 'html');
             }
         });
 
+        shadow.querySelector('.component').innerHTML = '';
+        shadow.querySelector('.component').appendChild(document.createElement(content));
 
     };
 
