@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Components Demo</title>
+    <script>
+        function camelCase(input) {
+            return input.toLowerCase().replace(/-(.)/g, function(match, group1) {
+                return group1.toUpperCase();
+            });
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link id="customProto" rel="import" href="components/customProto/customProto.html"/>
+    <link id="wccontent" rel="import" href="components/wccontent/wccontent.html"/>
+    <link id="wcmenu" rel="import" href="components/wcmenu/wcmenu.html"/>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <content>
+        <wc-menu menu-items='[
+            {"name":"Custom prototype", "element": "custom-proto"},
+            {"name":"item2", "element": "wc-test"},
+            {"name":"item3", "element": "wc-test"}
+        ]'></wc-menu>
+        <wc-content></wc-content>
+    </content>
+
+</body>
+</html>
