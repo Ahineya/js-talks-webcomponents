@@ -4,6 +4,22 @@
     var importDoc = document.currentScript.ownerDocument;
     var shadow;
 
+    function load(content, type) {
+        var tp = (type === 'javascript') ? 'js' : 'html';
+        $.ajax({
+            url: '/components/' + camelCase(content) + '/' + camelCase(content) + '.' + tp,
+            dataType: "text",
+            success: function(data) {
+                var cnt = document.createElement('wc-highlighter');
+                shadow.querySelector('.' + tp).innerHTML = '';
+                shadow.querySelector('.' + tp).appendChild(cnt);
+
+                cnt.show(data, type);
+
+            }
+        });
+    }
+
     var proto = Object.create(HTMLElement.prototype, {
         createdCallback: {
             value: function () {
@@ -15,9 +31,14 @@
                 var t = importDoc.querySelector('#wccontent-template');
                 var template = importDoc.importNode(t.content, true);
                 shadow.appendChild(template);
-                $(shadow.querySelector('.btn-fullscreen')).click(function() {
-                    $(shadow.querySelector('.js')).toggleClass('fullscreen');
-                    $(this).html($(this).html() == '-' ? '+' : '-');
+                shadow.querySelector('.btn-fullscreen').addEventListener('click', function() {
+                    if (this.innerHTML === '-') {
+                        this.innerHTML = '+';
+                        shadow.querySelector('.js').classList.remove('fullscreen');
+                    } else {
+                        this.innerHTML = '-';
+                        shadow.querySelector('.js').classList.add('fullscreen');
+                    }
                 });
             }
         }
@@ -25,30 +46,8 @@
 
     proto.loadContent = function(content) {
 
-        $.ajax({
-            url: '/components/' + camelCase(content) + '/' + camelCase(content) + '.js',
-            dataType: "text",
-            success: function(data) {
-                var cnt = document.createElement('wc-highlighter');
-                shadow.querySelector('.js').innerHTML = '';
-                shadow.querySelector('.js').appendChild(cnt);
-
-                cnt.show(data, 'javascript');
-
-            }
-        });
-
-        $.ajax({
-            url: '/components/' + camelCase(content) + '/' + camelCase(content) + '.html',
-            dataType: "text",
-            success: function(data) {
-                var cnt = document.createElement('wc-highlighter');
-                shadow.querySelector('.html').innerHTML = '';
-                shadow.querySelector('.html').appendChild(cnt);
-
-                cnt.show(data, 'html');
-            }
-        });
+        load(content, 'javascript');
+        load(content, 'html');
 
         shadow.querySelector('.component').innerHTML = '';
         shadow.querySelector('.component').appendChild(document.createElement(content));
