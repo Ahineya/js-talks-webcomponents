@@ -17,7 +17,7 @@
         var code = document.createElement('code');
         var style = document.createElement('style');
         style.setAttribute('type','text/css');
-        style.innerText = '@import "' + '/bower_components/highlightjs/styles/monokai_sublime.css' + '";';
+        style.innerText = '@import "' + 'bower_components/highlightjs/styles/monokai_sublime.css' + '";';
         shadow.appendChild(style);
 
         code.innerText = content;
