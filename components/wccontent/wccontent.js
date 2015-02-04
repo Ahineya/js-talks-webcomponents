@@ -7,7 +7,7 @@
     function load(content, type) {
         var tp = (type === 'javascript') ? 'js' : 'html';
         $.ajax({
-            url: '/components/' + camelCase(content) + '/' + camelCase(content) + '.' + tp,
+            url: 'components/' + camelCase(content) + '/' + camelCase(content) + '.' + tp,
             dataType: "text",
             success: function(data) {
                 var cnt = document.createElement('wc-highlighter');
