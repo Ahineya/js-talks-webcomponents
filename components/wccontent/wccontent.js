@@ -14,6 +14,13 @@
                 shadow.querySelector('.' + tp).innerHTML = '';
                 shadow.querySelector('.' + tp).appendChild(cnt);
 
+                if (tp === 'html') {
+                    var replacedData = data.replace(/<script.*/, '');
+                    var div = document.createElement('div');
+                    div.innerHTML = replacedData;
+                    shadow.querySelector('.component').appendChild(div);
+                }
+
                 cnt.show(data, type);
 
             }
@@ -51,7 +58,6 @@
 
         shadow.querySelector('.component').innerHTML = '';
         shadow.querySelector('.component').appendChild(document.createElement(content));
-
     };
 
     document.registerElement('wc-content', {prototype: proto});
