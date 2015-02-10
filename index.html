@@ -10,13 +10,17 @@
         }
     </script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/highlightjs/highlight.pack.js"></script>
 
     <link rel="stylesheet" href="bower_components/normalize.css/normalize.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
 
     <link id="customProto" rel="import" href="components/customProto/customProto.html"/>
-    <link id="customProto" rel="import" href="components/simpleElement/simpleElement.html"/>
+    <link id="simpleElement" rel="import" href="components/simpleElement/simpleElement.html"/>
+    <link rel="import" href="components/componentInheritance/componentInheritance.html"/>
+    <link rel="import" href="components/extendedComponentInheritance/extendedComponentInheritance.html"/>
+    <link rel="import" href="components/elementLifecycle/elementLifecycle.html"/>
+    <link rel="import" href="components/usingShadow/usingShadow.html"/>
+    <link rel="import" href="components/stylingUnresolved/stylingUnresolved.html"/>
 
     <link id="wccontent" rel="import" href="components/wccontent/wccontent.html"/>
     <link id="wcmenu" rel="import" href="components/wcmenu/wcmenu.html"/>
@@ -26,7 +30,12 @@
 <body>
         <wc-menu menu-items='[
             {"name":"Simple element", "element": "simple-element"},
-            {"name":"Custom prototype", "element": "custom-proto"}
+            {"name":"Custom prototype", "element": "custom-proto"},
+            {"name":"Inheritance", "element": "component-inheritance"},
+            {"name":"Extended Inheritance", "element": "extended-component-inheritance"},
+            {"name":"Element lifecycle", "element": "element-lifecycle"},
+            {"name":"Using Shadow", "element": "using-shadow"},
+            {"name":"Custom elements styling", "element": "styling-unresolved"}
         ]'></wc-menu>
         <wc-content></wc-content>
 
