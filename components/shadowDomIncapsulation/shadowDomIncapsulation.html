@@ -1,0 +1,20 @@
+<button id="test-incapsulation" onclick="javascript:getShadow();">Try to get shadow</button>
+
+<script src="shadowDomIncapsulation.js"></script>
+
+<script>
+    function getShadow() {
+        var elem = document.querySelector('shadow-dom-incapsulation');
+        console.log('Trying to take an element in Shadow: ', elem);
+
+        elem = document.querySelector('body /deep/ shadow-dom-incapsulation');
+        console.log('Getting element with /deep/ combinator: ', elem);
+
+        var p = elem.querySelector('p');
+        console.log('Trying to take an element in Shadow again: ', p);
+
+        p = elem.shadowRoot.querySelector('p');
+        console.log('Getting element via shadowRoot: ', p);
+
+    }
+</script>
