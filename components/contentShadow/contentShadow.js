@@ -10,7 +10,7 @@
         shadow2.innerHTML = '<div>Shadow 2</div>';
 
         if (this.getAttribute('x-content') === '1') {
-            shadow1.innerHTML = '<div>Shadow 1</div><concent></concent>';
+            shadow1.innerHTML = '<div>Shadow 1</div><content></content>';
         }
 
         if (this.getAttribute('x-shadow') === '1') {
